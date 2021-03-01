@@ -1,21 +1,13 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank">Twitter</a></li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li><a href="http://router.vuejs.org/" target="_blank">vue-router</a></li>
-      <li><a href="http://vuex.vuejs.org/" target="_blank">vuex</a></li>
-      <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
-    </ul>
+    <div id='names' class='container' v-if='state'>
+      <h1>Who pays the bill</h1>
+    </div>
+    <div id='result' class='container' v-if='!state'>
+      <div class='result_container'>
+        <h1>The loser is</h1>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -24,37 +16,109 @@ export default {
   name: 'app',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      state: true
     }
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-
-h1, h2 {
-  font-weight: normal;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
+body {
+    font-family: 'Roboto', sans-serif;
+    padding:0;
+    margin:0;
+  }
+  
 a {
-  color: #42b983;
+    text-decoration: none;
+    color:#ffffff;
+}
+  
+.container {
+    min-height: 300px;
+    width: 360px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+h1 {
+    color: #2196F3;
+    font-size: 40px;
+    text-align: center;
+}
+
+.input_container {
+    display: flex;
+}
+input:focus{
+    outline: none;
+}
+input {
+        flex-grow: 1;
+        border: 1px solid #dddddd;
+    background: #f2f2f2;
+    font-size: 20px;
+    border-radius: 5px 0px 0px 5px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+button {
+        border-radius: 0px 5px 5px 0px;
+    background: #2196F3;
+    color: #ffffff;
+    font-size: 16px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.list_of_names {
+    padding: 10px 0px;
+    cursor: pointer;
+}
+
+.list_of_names div {
+    margin-right: 10px;
+    margin-bottom: 10px;
+    background: #2196F3;
+    color: #ffffff;
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 15px;
+ }
+
+ .error_label {
+    color: #F44336;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.action_button {
+    cursor: pointer;
+   border: 1px solid #607D8B;
+   color: #607D8B;
+   font-size: 16px;
+   width: 200px;
+   text-align: center;
+   padding: 10px;
+   border-radius: 11px;
+   margin: 0 auto;
+}
+
+.action_button:hover {
+   background: #607D8B;
+   color:#ffffff;
+}
+
+.result_value {
+    font-size: 70px;
+    color: #607D8B;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 20px;
 }
 </style>
