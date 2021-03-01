@@ -15,14 +15,15 @@
         </div>
       </div>
       <div v-if='names.length > 1'>
-        <div class='action_button'>
+        <div class='action_button' @click='showResults'>
           Check the loser
         </div>
       </div>
     </div>
     <div id='result' class='container' v-if='!state'>
       <div class='result_container'>
-        <h1>The loser is</h1>
+        <h1>The loser is:</h1>
+        <div class='result_value'>{{result}}</div>
       </div>
     </div>
   </div>
@@ -37,6 +38,7 @@ export default {
       inputName: '',
       names: [],
       showError: false,
+      result: '',
     }
   },
   methods: {
@@ -55,6 +57,12 @@ export default {
       }else {
         return false
       }
+    },
+    showResults(){
+      let rand = this.names[Math.floor(Math.random() * this.names.length)]
+      this.result = rand
+
+      this.state = false
     }
   }
 }
