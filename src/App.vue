@@ -24,6 +24,9 @@
       <div class='result_container'>
         <h1>The loser is:</h1>
         <div class='result_value'>{{result}}</div>
+        <div class='action_button' @click='resetApp'>
+          Start again
+        </div>
       </div>
     </div>
   </div>
@@ -63,6 +66,11 @@ export default {
       this.result = rand
 
       this.state = false
+    },
+    resetApp(){
+      this.state = true
+      this.names = []
+      this.result = ''
     }
   }
 }
