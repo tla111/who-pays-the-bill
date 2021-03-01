@@ -10,7 +10,7 @@
         You must enter a name !!!
       </div>
       <div class='list_of_names'>
-        <div v-for='(name, index) in names' :key='index'>
+        <div v-for='(name, index) in names' :key='index' @click='removeName(index)'>
           {{name}}
         </div>
       </div>
@@ -71,7 +71,10 @@ export default {
       this.state = true
       this.names = []
       this.result = ''
-    }
+    },
+    removeName(index){
+      this.names.splice(index,1)
+    },
   }
 }
 </script>
