@@ -2,6 +2,13 @@
   <div id="app">
     <div id='names' class='container' v-if='state'>
       <h1>Who pays the bill</h1>
+      <div class='input_container'>
+        <input type='text' v-model='inputName'/>
+        <button @click='addNameToList'>ADD</button>
+      </div>
+      <div class='error_label' v-if='showError'>
+        You must enter a name !!!
+      </div>
     </div>
     <div id='result' class='container' v-if='!state'>
       <div class='result_container'>
@@ -16,7 +23,28 @@ export default {
   name: 'app',
   data () {
     return {
-      state: true
+      state: true,
+      inputName: '',
+      names: [],
+      showError: false,
+    }
+  },
+  methods: {
+    addNameToList(){
+      if(this.validate(this.inputName)){
+        this.names.push(this.inputName)
+        this.inputName = ''
+        this.showError = false
+      }else{
+        this.showError = true
+      }
+    },
+    validate(value){
+      if(value !== ''){
+        return true
+      }else {
+        return false
+      }
     }
   }
 }
