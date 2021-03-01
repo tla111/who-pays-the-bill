@@ -9,6 +9,16 @@
       <div class='error_label' v-if='showError'>
         You must enter a name !!!
       </div>
+      <div class='list_of_names'>
+        <div v-for='(name, index) in names' :key='index'>
+          {{name}}
+        </div>
+      </div>
+      <div v-if='names.length > 1'>
+        <div class='action_button'>
+          Check the loser
+        </div>
+      </div>
     </div>
     <div id='result' class='container' v-if='!state'>
       <div class='result_container'>
